@@ -3,6 +3,7 @@
 
 ## 使用方法
 ### step 1:初始化retrofit，在application中restApi作为全局变量：
+``` java
   Retrofit retrofit = new Retrofit.Builder()  
   		.baseUrl(BASE_TRC_URL)  
   		.addConverterFactory(new JsonAndStringConverters  
@@ -10,8 +11,10 @@
   						,StringConverterFactory.create()))  
   						.build();  
   restApi = retrofit.create(IRestApi.class);  
+```
 
 ### step 2:创建IRestApi.java 
+``` java
 	/**获得QiNiu token*/  
 	@GET("/clock/rest/storage/token/get")  
 	@string  
@@ -20,8 +23,10 @@
 	@POST("/clock/rest/file/add")  
 	@Json  
 	Call<ResponseBaseVo> addFile(@Body UpFileVo upFile);//response是json格式的调用默认的gson解析  
+```
 
 ### step 3:创建网络请求工厂类NetRequests.java  
+``` java
 public interface IStringListener{  
 		void successed(String t);  
 		void failed(Throwable t);  
@@ -78,4 +83,6 @@ public interface IStringListener{
 			}
 		});
 	}
+```
+
 ### step 4:调用
