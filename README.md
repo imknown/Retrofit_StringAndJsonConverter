@@ -1,8 +1,8 @@
 # Retrofit_StringAndJsonConverter
 ## client与server以json数据格式通讯，但针对特殊请求或请求数据失败的情况server返回不规则的String类型数据，扩展的retrofit的响应转换器
 
-##使用方法
-###step 1:初始化retrofit，在application中restApi作为全局变量：
+## 使用方法
+### step 1:初始化retrofit，在application中restApi作为全局变量：
   Retrofit retrofit = new Retrofit.Builder()  
   		.baseUrl(BASE_TRC_URL)  
   		.addConverterFactory(new JsonAndStringConverters  
@@ -11,7 +11,7 @@
   						.build();  
   restApi = retrofit.create(IRestApi.class);  
 
-###step 2:创建IRestApi.java 
+### step 2:创建IRestApi.java 
 	/**获得QiNiu token*/  
 	@GET("/clock/rest/storage/token/get")  
 	@string  
@@ -21,7 +21,7 @@
 	@Json  
 	Call<ResponseBaseVo> addFile(@Body UpFileVo upFile);//response是json格式的调用默认的gson解析  
 
-###step 3:创建网络请求工厂类NetRequests.java  
+### step 3:创建网络请求工厂类NetRequests.java  
 public interface IStringListener{  
 		void successed(String t);  
 		void failed(Throwable t);  
@@ -78,4 +78,4 @@ public interface IStringListener{
 			}
 		});
 	}
-###step 4:调用
+### step 4:调用
